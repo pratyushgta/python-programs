@@ -1,11 +1,11 @@
-'''a = 5
+a = 5
 for i in range(0,a):
     for j in range(0,i+1):
         print("* ",end="")
-    print("\r")'''
+    print("\r")
 
 # Q1
-'''import math
+import math
 
 for i in range(1, 100):
     num = i
@@ -16,9 +16,9 @@ for i in range(1, 100):
         num = num // 10
 
     if sumx == i:
-        print(i, "is a Strong Number")'''
+        print(i, "is a Strong Number")
 # Q2
-'''lst = list()
+lst = list()
 print("Enter total number of list elements: ")
 total = int(input())
 print("Enter", total, "elements")
@@ -39,9 +39,9 @@ for i in range(len(lst)):
         counter=1
 
 if counter==0:
-    print("Not Found!")'''
+    print("Not Found!")
 # Q3
-'''print("Enter total number of terms: ")
+print("Enter total number of terms: ")
 terms = int(input())
 
 first=0
@@ -51,10 +51,10 @@ for i in range(0,terms):
     print(first,end=" ")
     nextTerm = first + second
     first = second
-    second = nextTerm'''
+    second = nextTerm
 
 # Q4
-'''print("Enter a noomber: ")
+print("Enter a noomber: ")
 n = int(input())
 rev = " "
 while n > 0:
@@ -62,23 +62,23 @@ while n > 0:
     rev += str(digit)
     n = n // 10
 
-print("Reversed number: ",rev)'''
+print("Reversed number: ",rev)
 
 # Q5
-'''print("Enter n: ")
+print("Enter n: ")
 n = int(input())
 print("Boneless Chicken")
 for i in range(1, n+1):
     if i % 2 != 0:
-        print(i, end=" ")'''
+        print(i, end=" ")
 
 # Q6
-'''for i in range(5,0,-1):
+for i in range(5,0,-1):
     for k in range(i, 6):
         print(" ",end=" ")
     for j in range(i,0,-1):
         print(j,end=" ")
-    print("")'''
+    print("")
 
 # Q7
 print("Enter total number of subjects: ")

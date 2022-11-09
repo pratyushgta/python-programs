@@ -1,4 +1,4 @@
-'''largest = None
+largest = None
 smallest = None
 while True:
     num = input("Enter a number: ")
@@ -31,10 +31,10 @@ for line in fh:
             lst.append(i)
 
 lst.sort()
-print(lst)'''
+print(lst)
 
 # Q1
-'''no1 = int(input("Enter no. 1 "))
+no1 = int(input("Enter no. 1 "))
 no2 = int(input("Enter no. 2 "))
 no3 = int(input("Enter no. 3 "))
 no4 = int(input("Enter no. 4 "))
@@ -47,18 +47,18 @@ avg=sum/5
 if sum<100:
     print("True")
 else:
-    print("False")'''
+    print("False")
 
 # Q2
-'''import math
+import math
 
 r = int(input("Enter radius: "))
 area = math.pi * r * r
 
-print("Area is: ", area)'''
+print("Area is: ", area)
 
 # Q3 a
-'''a = int(input("Enter number 1: "))
+a = int(input("Enter number 1: "))
 b = int(input("Enter number 2: "))
 
 add = a + b
@@ -66,17 +66,17 @@ dif = b - a
 prod = a * b
 div = b/a
 
-print(">>>>CALCULATOR<<<<","\nSum: ",add,"\nDifference: ",dif,"\nProduct: ",prod,"\nDivision: ",div)'''
+print(">>>>CALCULATOR<<<<","\nSum: ",add,"\nDifference: ",dif,"\nProduct: ",prod,"\nDivision: ",div)
 
 #Q3 b
-'''a = int(input("Enter number 1: "))
+a = int(input("Enter number 1: "))
 b = int(input("Enter number 2: "))
 
 rem = b%a
 floor = b//a
 power = a**b
 
-print(">>>>OPERATIONS<<<<","\nRemainder: ",rem,"\nFloor Division: ",floor,"\nPower: ",power)'''
+print(">>>>OPERATIONS<<<<","\nRemainder: ",rem,"\nFloor Division: ",floor,"\nPower: ",power)
 
 #Q3 c
 first_name = input("Enter First Name: ")
