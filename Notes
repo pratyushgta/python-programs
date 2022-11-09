@@ -1,0 +1,19 @@
+
+# type is a keyword which is used to tell the data type of a variable
+# else-if in Python is written as elif
+# try-catch is try-except
+# keyword for creating functions is def
+# None is used to initialize a variable to null value
+# len(string) is used to find the length of the string. len is a function
+# >>> is called chevron prompt
+# .strip is used to remove whitespaces from both ends of a string. lstrip is used to remove it from left side and rstrip is for removing space from right side
+# Lists are arrays of python. they can contain any type of data. List can have lists within lists
+# range() function returns a LIST
+# We can create an empty list like: car = list() and then add stuff using list.append(<thing to add>)
+
+# We use numpy for arrays (numerical py). Used to do complex operations quickly and easier
+# import numpy as np | np is alias -> np.__ calling a function from numpy
+# If arr=[(1,2,3),(4,5,6),(7,8,9)], so printing arr[1:5] will give 4,5,6 and 7,8,9. Upper bound in range can be >len but
+it will print only up till current length of the array
+
+PANDAS

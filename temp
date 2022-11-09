@@ -1,0 +1,48 @@
+class bill:
+    def __init__(self):
+        self.product = list()
+
+    def readproduct_info(self):
+        for i in range(3):
+            s = input("Enter space separated Prod_id, Prod_name, Prod_price\n").split(" ")
+            temp = tuple(s)
+            self.product.append(temp)
+
+    def printproductinfo(self, id):
+        print(self.product)
+        for i in self.product:
+            if int(i[0]) == id:
+                return True
+            else:
+                return False
+
+
+class customerbill(bill):
+    def __init__(self):
+        super().__init__()
+        super().readproduct_info()
+        super().printproductinfo(0)
+
+    def customerbill(self):
+        idx = int(input("Enter product id: "))
+        qty = int(input("Enter quantity: "))
+
+        if not self.printproductinfo(idx):
+            print("ID not found!")
+            customerbill()
+
+        price = 0
+        for i in self.product:
+            if int(i[0]) == idx:
+                price = int(i[2])
+
+        amt = price * qty
+        total = (15 / 100) * amt + amt
+        if total > 800:
+            total = (12 / 100) * total - total
+
+        print("Total: ", total)
+
+
+ob = customerbill()
+ob.customerbill()
