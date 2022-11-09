@@ -11,7 +11,7 @@ print(data.tail())
 print(data.info())
 ## Finding count of Null values in each column
 print(data.isna().sum())
-## Printing all null values in 'Description' column
+## Printing all null values in 'Description' columnSS
 print(data[data['Description'].isna()])
 ## Printing all null values in 'CustomerID' column
 print(data[data['CustomerID'].isna()])

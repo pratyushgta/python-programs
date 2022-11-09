@@ -1,7 +1,7 @@
 a = 5
-for i in range(0,a):
-    for j in range(0,i+1):
-        print("* ",end="")
+for i in range(0, a):
+    for j in range(0, i + 1):
+        print("* ", end="")
     print("\r")
 
 # Q1
@@ -31,24 +31,24 @@ print("Enter the element to search: ")
 search = int(input())
 print(search)
 
-counter=0
+counter = 0
 
 for i in range(len(lst)):
     if lst[i] == search:
         print("Found!")
-        counter=1
+        counter = 1
 
-if counter==0:
+if counter == 0:
     print("Not Found!")
 # Q3
 print("Enter total number of terms: ")
 terms = int(input())
 
-first=0
-second=1
+first = 0
+second = 1
 
-for i in range(0,terms):
-    print(first,end=" ")
+for i in range(0, terms):
+    print(first, end=" ")
     nextTerm = first + second
     first = second
     second = nextTerm
@@ -62,28 +62,28 @@ while n > 0:
     rev += str(digit)
     n = n // 10
 
-print("Reversed number: ",rev)
+print("Reversed number: ", rev)
 
 # Q5
 print("Enter n: ")
 n = int(input())
 print("Boneless Chicken")
-for i in range(1, n+1):
+for i in range(1, n + 1):
     if i % 2 != 0:
         print(i, end=" ")
 
 # Q6
-for i in range(5,0,-1):
+for i in range(5, 0, -1):
     for k in range(i, 6):
-        print(" ",end=" ")
-    for j in range(i,0,-1):
-        print(j,end=" ")
+        print(" ", end=" ")
+    for j in range(i, 0, -1):
+        print(j, end=" ")
     print("")
 
 # Q7
 print("Enter total number of subjects: ")
 n = int(input())
-total_marks = n*100
+total_marks = n * 100
 print("Enter", n, "marks")
 
 total = 0
@@ -97,7 +97,7 @@ while n > 0:
         total += x
         n = n - 1
 
-p = (total / total_marks)*100
+p = (total / total_marks) * 100
 
 if p >= 92:
     print("Merit")
