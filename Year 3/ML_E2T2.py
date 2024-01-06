@@ -1,6 +1,6 @@
 """
  * This file contains code snippets for performing exploratory data analysis on seeds dataset
- * ML-E2-Task1
+ * ML-E2-Task2
  *
  * Original file is located at: https://colab.research.google.com/drive/19zag3G0H2e7cjLhyx6hQpZOGahwW8JNw
  * @author Pratyush Kumar (github.com/pratyushgta)
@@ -11,7 +11,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns # used for plotting. have better colors than matplot
 
-"""v.	Read “seeds.csv” file into data frame."""
+"""## EXPERIMENT 2 - Task 2
+v.	Read “seeds.csv” file into data frame.
+"""
 
 df = pd.read_csv('seeds.csv')
 df
@@ -53,78 +55,68 @@ sns.scatterplot(x='Kernel.Length',y='Kernel.Width', hue='Type', data=df)
 # different color pallete
 sns.scatterplot(x='Kernel.Length',y='Kernel.Width', hue='Type', data=df, palette = 'pastel')
 
-"""
-x.	Plot a Jointplot to understand relation between Perimeter and Compactness. Write your inference.
-"""
+"""x.	Plot a Jointplot to understand relation between Perimeter and Compactness. Write your inference."""
 
 sns.jointplot(x='Perimeter',y='Compactness', data=df)
 
-"""Inference: Positive Linear relationship. This positive correlation indicates that as the perimeter of the seeds increases, the compactness tends to increase.
+"""Inference:
+Joint plot = Scatter plot + histogram
+Scatter plot shows Positive relationship. This indicates that as the perimeter of the seeds increases, the compactness tends to increase.
+Histogram is denoting frequency of value stored in variable
 
 xi.	Plot a Box plot to understand correlation between compactness and type.
 """
 
+# unique values in type attribute
+df['Type'].unique()
+
 sns.boxplot(x='Type', y='Compactness', data=df)
-plt.xlabel('Type')
-plt.ylabel('Compactness')
-plt.title('Compactness by Type')
-plt.show()
-
-"""xii.	Plot a pair plot to understand all characteristics with type being the main parameter. State your inference"""
-
-# Pair plot provides a comprehensive view of the relationships between multiple numerical variables in the dataset while considering a categorical variable as the main parameter
-
-# Dropping non-numeric columns for the pairplot
-numeric_columns = df.select_dtypes(include=['float64', 'int64'])
-# 'Type' is the categorical column here
-# Add the 'Type' column to the selected numeric columns
-numeric_columns['Type'] = df['Type']
-sns.pairplot(numeric_columns, hue='Type')
-plt.show()
 
 """Inference:
+1. Type 2 has highest compactness and Type 3 has lowest
+2. No outliers for Type 2 and Type 3
+
+xii.	Plot a pair plot to understand all characteristics with type being the main parameter. State your inference
+"""
+
+sns.pairplot(df, hue='Type', diag_kind='hist')
+
+"""Inference:
+1. All char = all attributes/ all columns
+2. Pair plot is a nxn chart. n = number of attributes. For eg. [0,0] = Area, Area relation [1,0] = Area, Perimeter relation
+3. Pair plot provides a comprehensive view of the relationships between multiple numerical variables in the dataset while considering a categorical variable as the main parameter
+4. Asymmetric coeff. has no corelation (just scattered and has no relation). Therefore we can remove this column as it won't be able to predict anything
 
 xiii.	Plot a Violin plot to understand correlation between compactness and type. State your inference
 """
 
+# Center = box plot. White dot in center = median (Q2)
+# Curved shape is nothing but a histogram.
+# Curve is made by first forming a histogram, gets a smooth curve, rotates the histogram, shifts bars to get central axis. Based on central axis, divides the histograph
 sns.violinplot(x='Type', y='Compactness', data=df)
-plt.xlabel('Type')
-plt.ylabel('Compactness')
-plt.title('Compactness by Type')
-plt.show()
 
 """Inference:
-- Wider sections in the plot indicate a higher density of data points, while narrower sections represent lower density.
-- Differences in the shapes or spread of the violins can indicate varying compactness characteristics among different seed types.
+- Wider sections in the plot indicate a higher frequency of data points, while narrower sections represent lower frequency.
+- Differences in the shapes (spread of the violins) indicates varying compactness characteristics among different seed types.
 
 xiv.	Plot a Kernel Density Estimation plots to understand correlation between compactness and type. State your inference
 """
 
 # KDE plots provide a smooth estimation of the probability density function of a continuous variable (Compactness)
 # across different categories (Type)
-sns.displot(df, x='Compactness', hue='Type', kind='kde', fill=True)
-plt.xlabel('Compactness')
-plt.title('Kernel Density Estimation of Compactness by Type')
-plt.show()
+
+#sns.displot(df, x='Compactness', hue='Type', kind='kde', fill=True)
+sns.FacetGrid(df,hue='Type',height=5).map(sns.kdeplot,'Compactness').add_legend()
 
 """xv.	Plot a pair plot to understand all characteristics with type being the main parameter. (the main parameter, with KDE instead of histogram in diagonal subplots)"""
 
-# Dropping non-numeric columns
-numeric_columns = df.select_dtypes(include=['float64', 'int64'])
-# Adding the 'Type' to the selected numeric columns
-numeric_columns['Type'] = df['Type']
 # Creating pair plot with KDE on diagonal
-sns.pairplot(numeric_columns, hue='Type', diag_kind='kde')
-plt.show()
+# by default it takes kde
+sns.pairplot(df, hue='Type', height=3)
 
 """xvi.	An Andrews curve to display separability of data according to Type."""
 
 from pandas.plotting import andrews_curves
+# if attributes are overlapping too much, it will be difficult to classify. So, we use andrews curve to check extent of overlapping
 # Andrews curves is used to visualize the structure of data by transforming each row of a dataset into a curve
-# This curve is generated based on the coefficients of a Fourier series
-plt.figure(figsize=(8, 6))
-# Plot Andrews curves
-andrews_curves(df, 'Type', colormap='viridis')
-plt.title('Andrews Curves for Seed Types')
-plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-plt.show()
+andrews_curves(df, class_column='Type', colormap='viridis')
